@@ -2,17 +2,17 @@
 
 Para obtener las ultimas actualizaciones del proyecto
 ```
-  git pull origin main
+git pull origin main
 ```
 
 En caso hubiese depencias nuevas, ejecutar:
 
 ```
-  npm install
+npm install
 ```
 
 Para correr el proyecto:
 
 ```
-  npm start
+npm start
 ```
