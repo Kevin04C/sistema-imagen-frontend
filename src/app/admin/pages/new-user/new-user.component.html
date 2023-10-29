@@ -1,0 +1,121 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Crear nuevo usuario</h5>
+    <form
+      class="row g-3"
+      [formGroup]="newUseForm"
+      (ngSubmit)="onSubmit()"
+      autocomplete="off"
+    >
+      <div class="col-md-12">
+        <div class="form-floating">
+          <input
+            type="number"
+            class="form-control"
+            id="floatingName"
+            placeholder="DNI"
+            formControlName="dni"
+          />
+          <label for="floatingName">DNI</label>
+        </div>
+        <p class="form-text text-danger" *ngIf="isInvalidField('dni')">
+          {{ getErrorMessage("dni") }}
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingEmail"
+            placeholder="Nombre"
+            formControlName="nombre"
+          />
+          <label for="floatingEmail">Nombres</label>
+        </div>
+        <p class="form-text text-danger" *ngIf="isInvalidField('nombre')">
+          {{ getErrorMessage("nombre") }}
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            formControlName="apellidos"
+          />
+          <label for="floatingPassword">Apellidos</label>
+        </div>
+        <p class="form-text text-danger" *ngIf="isInvalidField('apellidos')">
+          {{ getErrorMessage("apellidos") }}
+        </p>
+      </div>
+      <div class="col-md-12">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingName"
+            placeholder="correo"
+            formControlName="correo"
+          />
+          <label for="floatingName">Correo</label>
+        </div>
+        <p class="form-text text-danger" *ngIf="isInvalidField('correo')">
+          {{ getErrorMessage("correo") }}
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            formControlName="contrasena"
+          />
+          <label for="floatingPassword">Contraseña</label>
+        </div>
+        <p class="form-text text-danger" *ngIf="isInvalidField('contrasena')">
+          {{ getErrorMessage("contrasena") }}
+        </p>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+            formControlName="confirmarContrasena"
+          />
+          <label for="floatingPassword">Confirmar Contraseña</label>
+        </div>
+        <p
+          class="form-text text-danger"
+          *ngIf="isInvalidField('confirmarContrasena')"
+        >
+          {{ getErrorMessage("confirmarContrasena") }}
+        </p>
+      </div>
+      <div class="col-12">
+        <ng-multiselect-dropdown
+          [placeholder]="'Roles'"
+          [settings]="dropdownSettings"
+          [data]="rolesData"
+          [(ngModel)]="selectedItems"
+          (onSelect)="onItemSelect($event)"
+          (onDeSelect)="onDeSelect($event)"
+        >
+        </ng-multiselect-dropdown>
+        <p class="form-text text-danger" *ngIf="nothingRolesSelected()">
+          Debe seleccionar al menos un rol
+        </p>
+      </div>
+
+      <button class="btn btn-primary" type="submit">CREAR USUARIO</button>
+    </form>
+  </div>
+</div>

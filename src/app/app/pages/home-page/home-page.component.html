@@ -1,0 +1,50 @@
+<div class="bg-primary text-white py-5">
+  <div class="container py-5">
+    <h2 class="w-50">
+      Descubre calidad y excelencia en cada servicio y producto que ofrecemos
+      para satisfacer tus necesidades.
+    </h2>
+    <p>Los mejores productos y servicios en un solo lugar</p>
+    <button
+      type="button"
+      class="btn btn-light shadow-0 text-primary pt-2 border border-white"
+    >
+      <span class="pt-1">Comprar Ahora</span>
+    </button>
+  </div>
+</div>
+
+<main class="container my-5">
+  <header class="mb-4">
+    <h3>Nuevos Productos</h3>
+  </header>
+  <div class="row">
+    <div
+      class="col-lg-3 col-md-6 col-sm-6 d-flex"
+      *ngFor="let product of products"
+    >
+      <div class="card w-100 my-2 shadow-2-strong">
+        <img
+          [src]="product.imagen"
+          class="card-img-top"
+          style="aspect-ratio: 1 / 1"
+        />
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ product.nombre }}</h5>
+          <p class="card-text">
+            {{
+              product.precio | currency : "PEN" : "symbol" : "1.2-2" : "es-PE"
+            }}
+          </p>
+          <div
+            class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto"
+          >
+            <a href="#!" class="btn btn-primary shadow-0 me-1"
+              >Agregar al carrito</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

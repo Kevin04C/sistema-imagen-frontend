@@ -1,0 +1,50 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Productos</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Categoria</th>
+          <th>Stock</th>
+          <th>Imagen</th>
+          <th>Estado</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.nombre }}</td>
+          <td>{{ product.precio }}</td>
+          <td>{{ product.categoria }}</td>
+          <td>{{ product.stock }}</td>
+          <td>
+            <img [src]="product.imagen" style="width: 30px;" alt="" class="d-block mx-auto">
+          </td>
+          <td>
+            <span
+              class="badge rounded-pill"
+              [ngClass]="{
+                'bg-success': product.activo,
+                'bg-danger': !product.activo
+              }"
+            >
+              {{ product.activo ? "ACTIVO" : "INACTIVO" }}
+            </span>
+          </td>
+          <td>
+            <a
+              class="btn btn-primary btn-sm me-2"
+              [routerLink]="['/admin/product/', product.id]"
+              >Editar</a
+            >
+            <a class="btn btn-danger btn-sm">Eliminar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

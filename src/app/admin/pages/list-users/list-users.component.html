@@ -1,0 +1,55 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Usuarios</h5>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>DNI</th>
+          <th>Correo</th>
+          <th>Estado</th>
+          <th>Roles</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.apellidos }}</td>
+          <td>{{ user.dni }}</td>
+          <td>{{ user.correo }}</td>
+          <td>
+            <span
+              class="badge rounded-pill"
+              [ngClass]="{
+                'bg-success': user.activo,
+                'bg-danger': !user.activo
+              }"
+            >
+              {{ user.activo ? "ACTIVO" : "INACTIVO" }}
+            </span>
+          </td>
+          <td>
+            <div>
+              <span
+                class="badge border-dark border-1 text-dark d-block mb-2"
+                *ngFor="let role of user.roles"
+              >
+                {{ role }}
+              </span>
+            </div>
+          </td>
+          <td>
+            <a
+              class="btn btn-primary btn-sm me-2"
+              [routerLink]="['/admin/user/', user.id]"
+              >Editar</a
+            >
+            <a class="btn btn-danger btn-sm">Eliminar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

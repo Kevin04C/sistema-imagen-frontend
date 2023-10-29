@@ -1,0 +1,153 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Datos del Usuario</h5>
+    <form
+      class="row gap-3"
+      [formGroup]="userForm"
+      (ngSubmit)="updateData()"
+      autocomplete="off"
+    >
+      <div class="col-md-12">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingName"
+            placeholder="Nobre"
+            formControlName="dni"
+          />
+          <label for="floatingName">DNI</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingName"
+              placeholder="Nombre"
+              formControlName="nombre"
+            />
+            <label for="floatingName">Nombre</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="floatingName"
+              placeholder="Apellidos"
+              formControlName="apellidos"
+            />
+            <label for="floatingName">Apellidos</label>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingName"
+            placeholder="Nombre"
+            formControlName="correo"
+          />
+          <label for="floatingName">CORREO</label>
+        </div>
+        <p
+          class="form-text text-danger"
+          *ngIf="isInvalidField(userForm, 'correo')"
+        >
+          {{ getErrorMessage(userForm, "correo") }}
+        </p>
+      </div>
+
+      <div class="col-md-12">
+        <ng-multiselect-dropdown
+          [placeholder]="'Roles'"
+          [settings]="dropdownSettings"
+          [data]="rolesData"
+          (onSelect)="onItemSelect($event)"
+          (onDeSelect)="onDeSelect($event)"
+        >
+        </ng-multiselect-dropdown>
+        <p
+          class="form-text text-danger"
+          *ngIf="isInvalidField(userForm, 'roles_id')"
+        >
+          {{ getErrorMessage(userForm, "roles_id") }}
+        </p>
+      </div>
+
+      <div class="col-md-12 d-flex gap-4">
+        <label>¿Cuenta Activa?</label>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="flexSwitchCheckDefault"
+            formControlName="activo"
+          />
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">ACTUALIZAR DATOS</button>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Actualizar Contraseña</h5>
+
+    <form
+      class="row gap-3"
+      autocomplete="off"
+      [formGroup]="changePasswordForm"
+      (ngSubmit)="updatePassword()"
+    >
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingName"
+              placeholder="Contraseña"
+              formControlName="password"
+            />
+            <label for="floatingName">Contraseña</label>
+          </div>
+          <p
+            class="form-text text-danger"
+            *ngIf="isInvalidField(changePasswordForm, 'password')"
+          >
+            {{ getErrorMessage(changePasswordForm, "password") }}
+          </p>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="password"
+              class="form-control"
+              id="floatingName"
+              formControlName="confirmPassword"
+              placeholder="Confirmar Contraseña"
+            />
+            <label for="floatingName">Confirmar contraseña</label>
+          </div>
+          <p
+            class="form-text text-danger"
+            *ngIf="isInvalidField(changePasswordForm, 'confirmPassword')"
+          >
+            {{ getErrorMessage(changePasswordForm, "confirmPassword") }}
+          </p>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">
+        ACTUALIZAR CONTRASEÑA
+      </button>
+    </form>
+  </div>
+</div>
